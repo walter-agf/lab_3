@@ -32,13 +32,28 @@ int main()
 
         else if (m == 3){
 
+            short num;
+            short int num_bi[8];
+
+            cout << "Ingrese el numero a probar -->"; cin >> num; cout << "\n\n";
+            for (int i = 7; i >= 0 ;i--){
+                //cout << num%2 << "\n";
+                if (num%2 > 0){
+                    num_bi[i] = 1;
+                    num /=2;
+                }
+                else {
+                    num_bi[i] = 0;
+                    num /=2;
+                }
+                //cout << num_bi[i];
+            }
+            //for (int i = 0; i < 8 ;i++) cout << num_bi[i];
+
+
         }
 
-        else if (m == 4){
-
-            break;
-
-        }
+        else if (m == 4) break;
 
         else cout << "\n\n\tValor impreciso reintente\n\n";
 
