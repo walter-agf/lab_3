@@ -16,39 +16,64 @@ int main()
 
             cout << "\tIngrese el nombre del archivo a codificar (sin .txt)\n\n\t --> "; cin >> name ; cout << "\n\n";
             cout << "\tIngrese un numero semilla para la generacion del archivos\n\n\t --> "; cin >> n ; cout << "\n\n";
-            cout << "\tIngrese el medotodo a usar\n\n\t1) Metodo 1 (CHAR)\n\n\t2) Metodo 2 (STRING) \n\n\t -- > ";cin >> m ; cout << "\n\n";
             con_bin (name);
 
+            while (true){
+
+                cout << "\tIngrese el medotodo a usar\n\n\t1) Metodo 1 (CHAR)\n\n\t2) Metodo 2 (STRING) \n\n\t -- > ";cin >> m ; cout << "\n\n";
+
+                if (m == 1){
+                    metodo_1_codi(name,n);
+                    cout << "\n\n\t\t Codificacion Completada\n\n";
+                    break;
+                }
+                else if (m == 2){
+
+
+
+
+
+                    break;
+                }
+                else {
+                    cout << "\n\n\tValor Inconcluzo\n\n";
+                    break;
+                }
+            }
         }
 
         else if (m == 2){
 
             cout << "\tIngrese el nombre del archivo a decodificar (sin .txt)\n\n\t --> "; cin >> name ; cout << "\n\n";
             cout << "\tIngrese un numero semilla para la generacion del archivos\n\n\t --> "; cin >> n ; cout << "\n\n";
-            cout << "\tIngrese el medotodo a usar\n\n\t1) Metodo 1 (CHAR)\n\n\t2) Metodo 2 (STRING) \n\n\t -- > ";cin >> m ; cout << "\n\n";
-            con_bin (name);
+            while (true){
+
+                cout << "\tIngrese el medotodo a usar\n\n\t1) Metodo 1 (CHAR)\n\n\t2) Metodo 2 (STRING) \n\n\t -- > ";cin >> m ; cout << "\n\n";
+
+                if (m == 1){
+                    metodo_1_deco(name,n);
+                    bin_tex (name);
+                    break;
+                }
+                else if (m == 2){
+
+
+
+
+
+                    break;
+                }
+                else {
+                    cout << "\n\n\tValor Inconcluzo\n\n";
+                    break;
+                }
+            }
+
 
         }
 
         else if (m == 3){
 
-            short num;
-            short int num_bi[8];
-
-            cout << "Ingrese el numero a probar -->"; cin >> num; cout << "\n\n";
-            for (int i = 7; i >= 0 ;i--){
-                //cout << num%2 << "\n";
-                if (num%2 > 0){
-                    num_bi[i] = 1;
-                    num /=2;
-                }
-                else {
-                    num_bi[i] = 0;
-                    num /=2;
-                }
-                //cout << num_bi[i];
-            }
-            //for (int i = 0; i < 8 ;i++) cout << num_bi[i];
 
 
         }
