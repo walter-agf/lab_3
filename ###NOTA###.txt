@@ -1,0 +1,9 @@
+El programa esta diseñado para que se guarde los archivos
+sin codificar en una la carpeta documents, y los archivos
+codificados igual dentro de documents, dentro de la carpeta 
+codificados si quiere ejecutar desde el programa buil creado
+
+solo cree una carpeta con el nombre "Practica_3" y adentro
+coloque la carpeta documents, vista aca.
+
+GRACIAS :D

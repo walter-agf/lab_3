@@ -35,6 +35,11 @@ int main()
 
                     metodo_1_codi(name_2,n,save);
 
+
+                    name = "../Practica_3/documents/codificados/" + name + ".dat";
+                    cout << "\n\n\n_____________________________________________________________________________\n\n\n";
+                    cambio(save,name);
+                    cout << "\n\n\n_____________________________________________________________________________\n\n\n";
                     cout << "\n\n\t\t Codificacion Completada\n\n";
                     break;
                 }
@@ -59,6 +64,10 @@ int main()
 
 
 
+            string name_24 = "../Practica_3/documents/codificados/" + name + ".dat";
+            string save = "../Practica_3/documents/codificados/" + name + "_save.dat";
+
+            retorno(name_24,save);
 
             cout << "\tIngrese un numero semilla para la generacion del archivos\n\n\t --> "; cin >> n ; cout << "\n\n";
             while (true){
@@ -70,9 +79,14 @@ int main()
                     metodo_1_deco(name_2,n,bi);
 
 
-                    string deco = "../Practica_3/documents/" + name + "_decodificado.txt";
+                    string deco = "../Practica_3/documents/" + name + ".txt";
                     name = "../Practica_3/documents/codificados/" + name + "_bi.dat";
+
+
+                    cout << "\n\n\n_____________________________________________________________________________\n\n\n";
                     bin_tex (name,deco);
+                    cout << "\n\n\n_____________________________________________________________________________\n\n\n";
+                    cout << "\n\n\t\t Decodificacion Completada\n\n";
                     break;
                 }
                 else if (m == 2){

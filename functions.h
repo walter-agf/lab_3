@@ -10,3 +10,7 @@ void metodo_1_codi(string name, short n, string save);
 void metodo_1_deco(string name,short n,string bi);
 
 void bin_tex (string name, string deco);
+
+void cambio(string save, string name);
+
+void retorno(string name_24, string save);

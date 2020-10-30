@@ -239,7 +239,7 @@ void metodo_1_deco(string name, short n,string bi)
     else cout << "ERROR!! En la lectura del archivo \n\n\n";
 
     doc.close();
-    //remove (name.c_str());
+    remove (name.c_str());
 }
 
 void bin_tex(string name, string deco)
@@ -252,7 +252,7 @@ void bin_tex(string name, string deco)
     int mul,num;
     int vec[8];   
 
-    while(!doc.eof()){
+    while(true){
         mul = 128;
         num = 0;
         for (int a = 0; a < 8;a++){
@@ -270,6 +270,7 @@ void bin_tex(string name, string deco)
             mul /= 2;
         }
         carac = char(num);
+        cout << carac;
         de << carac;
 
     };
@@ -279,4 +280,87 @@ void bin_tex(string name, string deco)
 
    remove (name.c_str());
 
+}
+
+void cambio(string save, string name)
+{
+    fstream doc(save.c_str(), fstream::in);
+    fstream cambio(name.c_str(), fstream ::out | fstream::binary);
+
+    char carac;
+    int mul,num;
+    int vec[8];
+
+    while(true){
+        mul = 128;
+        num = 0;
+        for (int a = 0; a < 8;a++){
+            doc.get(carac);
+            if (carac == '0') vec[a] = 0;
+            else if (carac == '1') vec[a] = 1;
+        }
+
+        if(doc.eof()) break;
+
+        for (int a = 0; a < 8;a++){
+            if (vec[a] == 1) {
+                num += mul;
+            }
+            mul /= 2;
+        }
+        //cout << num << "\t\t" << char (num) << "\n";
+        carac = char(num);
+        cout << carac;
+        cambio << carac;
+
+    }
+    doc.close();
+    cambio.close();
+
+    remove(save.c_str());
+}
+
+void retorno(string name_24, string save)
+{
+    fstream doc(name_24.c_str(), fstream::in);
+    fstream retorno(save.c_str(), fstream ::out | fstream::binary);
+
+    char carac;
+    int num;
+    int vec[8];
+
+    // EL TRUCO ESTA QUE CUADNO EL NUMERO ES NEGATIVO SE LE ADICIONAN 256
+
+    while(true){
+
+        doc.get(carac);
+        if(doc.eof()) break;
+
+        num = int(carac);
+
+        if (num < 0)num += 256;
+
+        //cout << num << "\t\t";
+
+
+        for (int i = 7; i >= 0 ;i--){
+            //cout << num%2 << "\n";
+            if (num%2 > 0){
+                vec[i] = 1;
+                num /=2;
+            }
+            else {
+                vec[i] = 0;
+                num /=2;
+            }
+        }
+
+        //for (int i = 0; i < 8 ;i++) cout << vec[i];
+        //cout << "\t\t" << carac << endl;
+
+        for (int i = 0; i < 8 ;i++) retorno << vec[i];
+
+    }
+    doc.close();
+    retorno.close();
 }
