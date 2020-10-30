@@ -15,18 +15,14 @@ int main()
         if (m == 1) {
 
             cout << "\tIngrese el nombre del archivo a codificar (sin .txt)\n\n\t --> "; cin >> name ; cout << "\n\n";
-            cout << "\tIngrese un numero semilla para la generacion del archivos\n\n\t --> "; cin >> n ; cout << "\n\n";
+
 
             string binario = "../Practica_3/documents/codificados/" + name + "_bi.dat";
             string name_1 = "../Practica_3/documents/" + name + ".txt";
 
-            fstream doc (name_1.c_str(), fstream :: in | fstream::ate);
-            long long int num_caracteres = doc.tellg();
-            doc.seekg(0);
-            int bit_neg[num_caracteres];
-            doc.close();
+            con_bin(name_1,binario);
 
-            con_bin(name_1,binario,bit_neg);
+            cout << "\tIngrese un numero semilla para la generacion del archivos\n\n\t --> "; cin >> n ; cout << "\n\n";
 
             while (true){
 
@@ -38,12 +34,6 @@ int main()
                     string name_2 = "../Practica_3/documents/codificados/" + name + "_bi.dat";
 
                     metodo_1_codi(name_2,n,save);
-
-
-                    string dat = "../Practica_3/documents/codificados/" + name + ".dat";
-                    name = "../Practica_3/documents/codificados/" + name + "_save.dat";
-
-                    //bin_tex (name,dat,bit_neg);
 
                     cout << "\n\n\t\t Codificacion Completada\n\n";
                     break;
@@ -66,22 +56,14 @@ int main()
         else if (m == 2){
 
             cout << "\tIngrese el nombre del archivo a decodificar (sin .txt)\n\n\t --> "; cin >> name ; cout << "\n\n";
+
+
+
+
             cout << "\tIngrese un numero semilla para la generacion del archivos\n\n\t --> "; cin >> n ; cout << "\n\n";
             while (true){
-
                 cout << "\tIngrese el medotodo a usar\n\n\t1) Metodo 1 (CHAR)\n\n\t2) Metodo 2 (STRING) \n\n\t -- > ";cin >> m ; cout << "\n\n";
-
                 if (m == 1){
-
-                    string binario = "../Practica_3/documents/codificados/" + name + "_save.dat";
-                    string name_1 = "../Practica_3/documents/codificados/" + name + ".dat";
-                    fstream doc (name_1.c_str(), fstream :: in | fstream::ate);
-                    long long int num_caracteres = doc.tellg();
-                    doc.seekg(0);
-                    int bit_neg[num_caracteres];
-                    doc.close();
-
-                    //con_bin(name_1,binario,bit_neg);
 
                     string bi = "../Practica_3/documents/codificados/" + name + "_bi.dat";
                     string name_2 = "../Practica_3/documents/codificados/" + name + "_save.dat";
@@ -90,13 +72,10 @@ int main()
 
                     string deco = "../Practica_3/documents/" + name + "_decodificado.txt";
                     name = "../Practica_3/documents/codificados/" + name + "_bi.dat";
-                    bin_tex (name,deco,bit_neg);
+                    bin_tex (name,deco);
                     break;
                 }
                 else if (m == 2){
-
-
-
 
 
                     break;
