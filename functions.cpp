@@ -308,6 +308,9 @@ void cambio(string save, string name)
             }
             mul /= 2;
         }
+
+        if (num == 26) num =45;
+
         //cout << num << "\t\t" << char (num) << "\n";
         carac = char(num);
         cout << carac;
@@ -322,26 +325,27 @@ void cambio(string save, string name)
 
 void retorno(string name_24, string save)
 {
-    fstream doc(name_24.c_str(), fstream::in);
+    fstream doc(name_24.c_str(), fstream::in | fstream::ate);
     fstream retorno(save.c_str(), fstream ::out | fstream::binary);
 
+    int num_car = doc.tellg();
+    doc.seekg(0);
+
+    cout<<num_car << "\n\n";
+
     char carac;
-    int num;
+    int num, cont = 0;
     int vec[8];
 
     // EL TRUCO ESTA QUE CUADNO EL NUMERO ES NEGATIVO SE LE ADICIONAN 256
 
-    while(true){
-
+    while(cont != num_car){
+        //cout << "Hola";
         doc.get(carac);
-        if(doc.eof()) break;
-
+        //if (carac == char (26)) cout << "AQUI ES HPPPP";
         num = int(carac);
-
         if (num < 0)num += 256;
-
-        //cout << num << "\t\t";
-
+        cout << num << "\t\t";
 
         for (int i = 7; i >= 0 ;i--){
             //cout << num%2 << "\n";
@@ -356,11 +360,109 @@ void retorno(string name_24, string save)
         }
 
         //for (int i = 0; i < 8 ;i++) cout << vec[i];
-        //cout << "\t\t" << carac << endl;
+        cout << "\t\t" << carac << endl;
 
         for (int i = 0; i < 8 ;i++) retorno << vec[i];
 
+        //cout << "\t" << doc.tellg() << "\n";
+        cont++;
     }
     doc.close();
     retorno.close();
 }
+
+/*_____________________________________________________________________________________________________
+
+METODO 2  */
+
+void metodo_2_codi(string name, int n, string save)
+{
+    fstream doc (name.c_str(), fstream :: in);
+
+    fstream codi(save.c_str(), fstream ::out | fstream::binary);
+
+    char vec[n];
+
+    while (!doc.eof()){
+
+        for (int i = 0; i < n; i++){
+            if (doc.eof()) break;
+            doc.get(vec[i]);
+        }
+
+        codi << vec[n-1];
+
+        for (int i = 0; i < n-1; i++) codi << vec[i];
+    }
+
+    doc.close();
+    codi.close();
+    remove(name.c_str());
+}
+
+void metodo_2_deco(string name, int n, string bi)
+{
+    fstream doc (name.c_str(), fstream :: in);
+    fstream deco(bi.c_str(), fstream ::out | fstream::binary);
+    char vec[n];
+    while (!doc.eof()){
+        for (int i = 0; i < n; i++){
+            if (doc.eof()) break;
+            doc.get(vec[i]);
+            //cout << vec[i];
+        }
+        //cout << "\t\t" << vec[1];
+        deco << vec[1];
+        for (int i = 2; i < n; i++){
+            deco << vec[i];
+            //cout << vec[i];
+        }
+        //cout << vec[0] << endl;
+        deco << vec[0];
+    }
+    doc.close();
+    deco.close();
+    //remove(name.c_str());
+}
+
+
+
+
+
+
+
+//while (true) {
+//    //cout << num_caracteres << "\t\t";
+//    num_caracteres += n ;
+//    //cout << num_caracteres << "\t\t" << final << "\t";
+
+
+//    if (num_caracteres > final) {
+//        int dif = num_caracteres - final;
+//        num_caracteres = final;
+//        n -= dif;
+//    }
+
+//    doc.seekg(num_caracteres);
+
+//    doc.get(carac);
+
+//    codi << carac;
+
+//    num_caracteres -= n - 2;
+//    doc.seekg(num_caracteres);
+
+//    for (int i = 1;i < n;i++ ){
+
+//        //cout << i << "\t";
+
+//        doc.get(carac);
+//        codi << (carac);
+//    }
+
+//    num_caracteres = doc.tellg();
+
+
+//    if (num_caracteres == -1) break;
+//    //cout << endl;
+//}
